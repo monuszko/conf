@@ -1,3 +1,5 @@
+# This modifies UPARROW and DOWNARROW keys to supply commands from
+# bash history file using INCREMENTAL SEARCH.
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 set show-all-if-ambiguous on

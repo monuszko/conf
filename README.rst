@@ -1,7 +1,7 @@
 Purpose
 =======
 
-Elegant way to share config files between my Linux computers.
+An elegant way to share config files between my Linux computers.
 
 In a nutshell, my whole home directory is in a *bare* git repo. Then I can add
 selected files using::
