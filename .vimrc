@@ -26,13 +26,8 @@ set background=dark
 " Comment color
 hi Comment ctermfg=DarkGreen
 
-" Fake word wrap:
-function! ShowOverLength()
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%80v.\+/
-endfunction
 
-au FileType vim,python,rst,text call ShowOverLength()
+au FileType vim,python,rst,text let &colorcolumn="80,".join(range(120,999),",")
 
 " n makes it respect next list items
 :set formatoptions=jncroql
