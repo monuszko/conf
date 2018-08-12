@@ -18,4 +18,5 @@ fi
 
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/home/mareko/bin:/home/mareko/skrypty"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:$HOME/bin:$HOME/skrypty"
+export PATH="$HOME/.cargo/bin:$PATH"

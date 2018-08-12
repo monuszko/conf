@@ -149,4 +149,4 @@ export HISTFILE=~/.bash_eternal_history
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 alias nv="nvim"
-alias conf='/usr/bin/git --git-dir=/home/mareko/.conf/ --work-tree=/home/mareko'
+alias conf='/usr/bin/git --git-dir=$HOME/.conf/ --work-tree=$HOME/'
