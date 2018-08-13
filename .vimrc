@@ -26,8 +26,16 @@ set background=dark
 " Comment color
 hi Comment ctermfg=DarkGreen
 
+" Helps to keep sane line lengths:
+let &colorcolumn="80" 
 
-au FileType vim,python,rst,text let &colorcolumn="80,".join(range(120,999),",")
+" Also, highlight characters 120th and beyond:
+function! ShowOverLength()
+    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    match OverLength /\%120v.\+/
+endfunction
+
+au FileType vim,python,rst,text call ShowOverLength()
 
 " n makes it respect next list items
 :set formatoptions=jncroql
