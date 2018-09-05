@@ -44,8 +44,7 @@ client.background       #ffffff
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-# sudo apt-get install xfce4-terminal
-set $term xfce4-terminal
+set $term gnome-terminal
 bindsym $mod+Return exec $term
 
 # kill focused window
