@@ -19,6 +19,8 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+focus_follows_mouse no
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -29,10 +31,22 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Colors:
+#
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #ffffff   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 # sudo apt-get install xfce4-terminal
-bindsym $mod+Return exec xfce4-terminal
+set $term xfce4-terminal
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -94,25 +108,32 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $reading workspace 1: reading
+set $terminals workspace 2: terminals
+set $preview workspace 3: preview
+set $comms workspace 4: comms
+set $background workspace 5: background
+set $fun workspace 6: fun
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+1 $reading
+bindsym $mod+2 $terminals
+bindsym $mod+3 $preview
+bindsym $mod+4 $comms
+bindsym $mod+5 $background
+bindsym $mod+6 $fun
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+1 move container to $reading
+bindsym $mod+Shift+2 move container to $terminals
+bindsym $mod+Shift+3 move container to $preview
+bindsym $mod+Shift+4 move container to $comms
+bindsym $mod+Shift+5 move container to $background
+bindsym $mod+Shift+6 move container to $fun
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -122,6 +143,25 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# System mode:
+mode "$mode_system" {
+    # Pause - lock:
+    bindsym Pause exec i3lock, mode "default"
+    # s - suspend (and lock):
+    bindsym s exec i3lock && systemctl suspend, mode "default"
+    # r - restart i3:
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym r restart
+    # l - log out:
+    bindsym Shift+l exec i3-msg exit
+    # Escape, Menu - return to default:
+    bindsym Escape mode "default"
+    bindsym Menu mode "default"
+}
+
+set $mode_system System: [Pause] [s]uspend [r]estart [l]ogout, [Esc/Menu]
+bindsym Menu mode "$mode_system"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -130,10 +170,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -154,26 +194,16 @@ bar {
         status_command i3status
 }
 
-# install pm-utils
-# sudo pm-suspend
-
 for_window [class="Gimp"] floating disable
 
-# System mode:
-set $mode_system System: [Pause] [s]uspend [r]estart [l]ogout, [Esc/Menu] 
-bindsym Menu mode "$mode_system"
+assign [class="Skype"] $comms
+assign [title="irssi"] $comms
+assign [class="Slack"] $comms
+assign [title="cmus"] $background
+assign [class="Rftg"] $fun
+no_focus [class="Rftg"]
 
-mode "$mode_system" {
-    # Pause - lock:
-    bindsym Pause exec i3lock, mode "default"
-    # s - suspend (and lock):
-    bindsym s exec i3lock && systemctl suspend, mode "default"
-    # r - restart i3:
-    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym r restart
-    # l - log out:
-    bindsym l exec i3-msg exit
-    # Escape, Menu - return to default:
-    bindsym Escape mode "default"
-    bindsym Menu mode "default"
-}
+exec firefox
+exec messenger
+exec $term -e "irssi -c irc.freenode.net" -T irssi
+exec $term -e "cmus" -T cmus
