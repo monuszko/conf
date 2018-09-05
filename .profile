@@ -18,5 +18,9 @@ fi
 
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:$HOME/bin:$HOME/skrypty"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:$HOME/bin:$HOME/scripts"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+at now + 2 hours -f scripts/at/work_break
+at now + 4 hours -f scripts/at/work_break
+at now + 6 hours -f scripts/at/work_break
