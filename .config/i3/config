@@ -107,32 +107,32 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $reading workspace 1: reading
-set $terminals workspace 2: terminals
-set $preview workspace 3: preview
-set $comms workspace 4: comms
-set $background workspace 5: background
-set $fun workspace 6: fun
+set $reading 1: reading
+set $terminals 2: terminals
+set $preview 3: preview
+set $comms 4: comms
+set $background 5: background
+set $fun 6: fun
 
 # switch to workspace
-bindsym $mod+1 $reading
-bindsym $mod+2 $terminals
-bindsym $mod+3 $preview
-bindsym $mod+4 $comms
-bindsym $mod+5 $background
-bindsym $mod+6 $fun
+bindsym $mod+1 workspace $reading
+bindsym $mod+2 workspace $terminals
+bindsym $mod+3 workspace $preview
+bindsym $mod+4 workspace $comms
+bindsym $mod+5 workspace $background
+bindsym $mod+6 workspace $fun
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to $reading
-bindsym $mod+Shift+2 move container to $terminals
-bindsym $mod+Shift+3 move container to $preview
-bindsym $mod+Shift+4 move container to $comms
-bindsym $mod+Shift+5 move container to $background
-bindsym $mod+Shift+6 move container to $fun
+bindsym $mod+Shift+1 move container to workspace $reading
+bindsym $mod+Shift+2 move container to workspace $terminals
+bindsym $mod+Shift+3 move container to workspace $preview
+bindsym $mod+Shift+4 move container to workspace $comms
+bindsym $mod+Shift+5 move container to workspace $background
+bindsym $mod+Shift+6 move container to workspace $fun
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -204,5 +204,5 @@ no_focus [class="Rftg"]
 
 exec firefox
 exec messenger
-exec $term -e "irssi -c irc.freenode.net" -T irssi
-exec $term -e "cmus" -T cmus
+exec xfce4-terminal -e "irssi -c irc.freenode.net" -T irssi
+exec xfce4-terminal -e "cmus" -T cmus
