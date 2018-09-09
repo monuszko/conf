@@ -151,3 +151,8 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 alias nv="nvim"
 alias conf='/usr/bin/git --git-dir=$HOME/.conf/ --work-tree=$HOME/'
+alias rftg='cd ~/Gry/rftg/0.9.5/src;./rftg'
+
+# i3 aliases to make up for its lack of conditional expressions:
+alias messenger="skypeforlinux || slack"
+alias chrum="google-chrome || chromium"
