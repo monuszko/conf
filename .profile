@@ -22,7 +22,7 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:$HOME/bin:$HOME/scripts
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # remap CapsLock -> CTRL:
-setxkbmap -layout us -option ctrl:nocaps
+setxkbmap -layout pl -option ctrl:nocaps
 
 at now + 2 hours -f scripts/at/work_break
 at now + 4 hours -f scripts/at/work_break
