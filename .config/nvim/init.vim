@@ -10,11 +10,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 " like 'git diff', marks changed lines:
 Plug 'airblade/vim-gitgutter'
 " Automatically, incrementally generate tags:
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 " surround
 Plug 'tpope/vim-surround'
 " repeat - makes . work for plugins
 Plug 'tpope/vim-repeat'
+" tagbar - display file structure
+Plug 'majutsushi/tagbar'
+
 
 call plug#end()
 
@@ -42,4 +45,6 @@ endfunction
 command -nargs=1 Glines call GlobalChangedLines(<q-args>)
 
 " gutentags - show indication in statusline when busy
-" :set statusline+=%{gutentags#statusline()}
+" but it breaks(clears) the statusline of neovim!
+"
+" set statusline+=%{gutentags#statusline()}
