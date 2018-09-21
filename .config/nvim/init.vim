@@ -17,9 +17,18 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " tagbar - display file structure
 Plug 'majutsushi/tagbar'
+" syntax highlighting for Robot Framework (automatic tests):
+Plug 'mfukar/robotframework-vim'
 
 
 call plug#end()
+
+
+" In .robot files, ALWAYS insert 4 spaces when pressing Tab
+augroup robot
+    autocmd!
+    autocmd BufNewFile,BufRead *.robot inoremap <buffer> <Tab> <Space><Space><Space><Space>
+augroup END
 
 " Automatically install missing plugins with Plug:
 autocmd VimEnter *
