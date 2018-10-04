@@ -18,7 +18,7 @@ fi
 
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:$HOME/bin:$HOME/scripts"
+PATH="$PATH:$HOME/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/bin:$HOME/scripts"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # remap CapsLock -> CTRL:
