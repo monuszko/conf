@@ -26,6 +26,8 @@ set background=dark
 " Comment color
 hi Comment ctermfg=DarkGreen
 
+au BufNewFile,BufRead *.gv set filetype=dot
+
 " Helps to keep sane line lengths:
 let &colorcolumn="80" 
 
@@ -36,6 +38,7 @@ function! ShowOverLength()
 endfunction
 
 au FileType vim,python,rst,text call ShowOverLength()
+
 
 " n makes it respect next list items
 :set formatoptions=jncroql
@@ -98,7 +101,6 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-inoremap <Esc> <Noop>
 
 :set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
