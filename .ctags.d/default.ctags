@@ -91,7 +91,6 @@
 --regex-javascript=/^[ \t]*var[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*new/\1/V,Variable,Variables/b
 --regex-javascript=/^[ \t]*let[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*new/\1/V,Variable,Variables/b
 --regex-javascript=/^[ \t]*const[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*new/\1/V,Variable,Variables/b
---regex-javascript=/^\(\([A-Z][a-z]\+\)\{1,\}\) = BaseModalView\.*extend({/\1/O,Object,Objects/b
---regex-javascript=/^[^ ]\+\.\(\([A-Z][a-z]\+\)\{1,\}\) = Ractive\.extend({/\1/O,Object,Objects/b
+--regex-javascript=/^\([A-Za-z]\+\.\)*\([A-Za-z]\+\) = \([A-Za-z]\+\.\)\+extend({/\2/O,Object,Objects/b
 --regex-javascript=/^[ \t]*\(['"]\)\([A-Za-z0-9_$]\{1,\}\)\1[ \t]*:[ \t]*[(]*function[ \t]*(/\2/M,Method,Methods/b
 --regex-javascript=/^[ \t]\+\(this\|self\)\.set(\(['"]\)\([A-Za-z_]\+\)\2, [^)]\+);/\3/P,Property,Properties/b
