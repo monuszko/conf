@@ -53,7 +53,5 @@ endfunction
 
 command -nargs=1 Glines call GlobalChangedLines(<q-args>)
 
-" gutentags - show indication in statusline when busy
-" but it breaks(clears) the statusline of neovim!
-"
-" set statusline+=%{gutentags#statusline()}
+" using ripgrep enables the use of custom .ignore file in project root
+let g:gutentags_file_list_command='rg --files'
