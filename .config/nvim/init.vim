@@ -20,6 +20,9 @@ Plug 'majutsushi/tagbar'
 " syntax highlighting for Robot Framework (automatic tests):
 Plug 'mfukar/robotframework-vim'
 
+" Select blocks by indent, in Python etc.
+Plug 'michaeljsmith/vim-indent-object'
+
 
 call plug#end()
 

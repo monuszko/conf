@@ -135,6 +135,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
+    fortune | cowsay
+fi
+
 # Eternal bash history.
 # ---------------------
 # Undocumented feature which sets the size to "unlimited".
