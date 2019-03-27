@@ -40,6 +40,7 @@ autocmd VimEnter *
   \| endif
 
 
+set updatetime=100
 " GitGutter - Glines
 "
 " usage - :Glines s/\s\+$//
@@ -55,6 +56,18 @@ function! GlobalChangedLines(ex_cmd)
 endfunction
 
 command -nargs=1 Glines call GlobalChangedLines(<q-args>)
+
+function! ToggleGitGutterBase()
+    if g:gitgutter_diff_base != "master"
+        echom "Diff base: master"
+        let g:gitgutter_diff_base = "master"
+    else
+        echom "Diff base: HEAD"
+        let g:gitgutter_diff_base = "HEAD"
+    endif
+endfunction
+
+nnoremap <F12> :call ToggleGitGutterBase()<CR>
 
 " using ripgrep enables the use of custom .ignore file in project root
 let g:gutentags_file_list_command='rg --files'
