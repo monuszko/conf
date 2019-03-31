@@ -68,6 +68,18 @@ function! ToggleGitGutterBase()
 endfunction
 
 nnoremap <F12> :call ToggleGitGutterBase()<CR>
+nmap <F10> :TagbarToggle<CR>
 
 " using ripgrep enables the use of custom .ignore file in project root
 let g:gutentags_file_list_command='rg --files'
+
+let g:tagbar_type_javascript = {
+    \ 'ctagstype' : 'javascript',
+    \ 'kinds'     : [
+        \ 'A:Arrays',
+        \ 'O:Objects',
+        \ 'M:Methods',
+        \ 'P:Properties',
+        \ 'V:Variables',
+    \ ]
+\ }
