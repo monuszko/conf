@@ -77,3 +77,10 @@ nmap <F10> :TagbarToggle<CR>
 
 " using ripgrep enables the use of custom .ignore file in project root
 let g:gutentags_file_list_command='rg --files'
+
+" fucking Eatchar is needed to remove extra space after command abbreviation
+func Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+cabbrev tj tj /<C-R>=Eatchar('\s')<cr>
