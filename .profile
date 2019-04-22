@@ -23,7 +23,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
 # remap CapsLock -> CTRL:
-setxkbmap -layout pl -option ctrl:nocaps
+setxkbmap -option ctrl:nocaps
 
 at now + 2 hours -f scripts/at/work_break
 at now + 4 hours -f scripts/at/work_break
