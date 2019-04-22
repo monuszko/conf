@@ -33,6 +33,11 @@ augroup robot
     autocmd BufNewFile,BufRead *.robot inoremap <buffer> <Tab> <Space><Space><Space><Space>
 augroup END
 
+augroup javas
+    autocmd!
+    autocmd BufWritePost *.js !eslint %
+augroup END
+
 " Automatically install missing plugins with Plug:
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
