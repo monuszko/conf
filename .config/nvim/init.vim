@@ -84,3 +84,6 @@ func Eatchar(pat)
   return (c =~ a:pat) ? '' : c
 endfunc
 cabbrev tj tj /<C-R>=Eatchar('\s')<cr>
+
+" show out of sight substitution preview in a temporary buffer
+set inccommand=split
